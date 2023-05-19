@@ -23,6 +23,7 @@
     
     border-bottom :5px double #000;
    }
+   .paragraf { font-size:16px; line-height: 1.5em;}
    body{
     font-family: "Times New Roman", Times, serif;
    }
@@ -144,8 +145,34 @@ p {
             <tr><td></td><td></td><td></td><td height =" 10px">di Tempat</td>
         </tbody>
     </table>
-           
-    tanggal cetak  : <?= date('d F Y'); ?>
+    <br>
+           <table>
+        <tbody>
+            <tr>
+            <td>Dengan Hormat,</td>
+            </tr>
+            <?php foreach ($pelaksanaanpkl as $pelaksanaan) : ?>
+            <tr>
+                <td class="justify paragraf">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dalam rangka memenuhi kurikulum dan melakasanakan program kerja
+                sekolah serta menambah wawasan tentang Dunia Kerja bagi peserta didik di
+                SMKN 1 Banyuanyar, maka dengan ini kami memohon bantuan Bapak/Ibu untuk
+                memberikan izin kepada peserta didik SMKN 1 Banyuanyar untuk melaksanakan
+                kegiatan Praktik Kerja Lapangan (PKL) pada Instansi/Perusahaan yang Bapak/Ibu pimpin. 
+                Adapun rencana program kegiatan PKL tersebut akan berlangsung selama&nbsp;<?php echo $pelaksanaan->durasi ?>&nbsp;
+                bulan dimulai tanggal&nbsp;<?php echo date("d-m-Y", strtotime($pelaksanaan->tanggal_masuk)) ?>&nbsp;s.d&nbsp;<?php echo date("d-m-Y", strtotime($pelaksanaan->tanggal_keluar)) ?>.
+                </td>
+            </tr>
+            <?php break; ?>
+            <?php endforeach; ?>
+            <tr>
+                <td class="justify paragraf">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Adapun nama siswa yang akan mengikuti PKL tersebut adalah:
+                </td>
+            </tr>
+        </tbody>    
+           </table>
+   <br>
     <table class="tb1" >
         <thead>
             <tr>
@@ -168,6 +195,23 @@ p {
             endforeach; ?>
         </tbody>
     </table>
+    <br>
+    <table>
+        <tbody>
+        <tr>
+                <td class="justify paragraf">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikian Surat Permohonan PKL ini kami ajukan, atas perhatian dan kerjasamanya kami sampaikan terimakasih.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <table align=right width="700">
+			<tr>
+				<td width="430"><br><br><br><br></td>
+				<td class="text" align="center">Kepala SMK N 1 Banyuanyar<br><br><br><br><br><b><u>SUMARIADI, S.PD., MM</u></b><br><b>NIP.</b></td>
+			</tr>
+	     </table>
 <?php  ?>                   
 </body>
 <script>

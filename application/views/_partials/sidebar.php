@@ -5,7 +5,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('admin/Beranda/'); ?>">
                 <div class="sidebar-brand-icon">
-                    <img class="center mx-auto" width=50px src="<?= base_url('assets/img/login.png'); ?>" />
+                    <img class="center mx-auto" width=50px src="<?= base_url('assets/img/smkbx.png'); ?>" />
                 </div>
             </a>
             <p class="text-center text-white text-uppercase font-weight-bold">Halaman Admin</p>
