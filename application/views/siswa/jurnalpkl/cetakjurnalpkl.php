@@ -34,7 +34,7 @@ border-bottom="1px solid black"
     <td> : ' . $data_jurnal_pkl->kelas . '</td>
   </tr>
   <tr>
-    <td width="30%">Paket Keahlian</td>
+    <td width="30%">Jurusan</td>
     <td> : ' . $data_jurnal_pkl->nama_jurusan . '</td>
   </tr>
   <tr>

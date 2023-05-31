@@ -42,7 +42,8 @@ class datadudi_model extends CI_Model
     {
         $this->db->join('jurusan', 'jurusan.id_jurusan = data_dudi.id_jurusan');
         // $this->db->where('id_jurusan', $this->session->userdata('id_jurusan'));
-        // $this->db->order_by('nama_dudi', 'ASC');
+        $this->db->order_by('nama_jurusan', 'ASC');
+        $this->db->order_by('kuota', 'ASC');
         $query = $this->db->get($this->_table);
         return $query->result();
     }

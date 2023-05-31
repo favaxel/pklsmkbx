@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta http-equiv="refresh" content="300">
 
 <head>
     <?php $this->load->view("_partials/head.php") ?>
@@ -25,10 +26,9 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-
                 <div class="container-fluid">
-                    <!-- Page Heading -->
 
+                    <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-2">
                         <h1 class="h2 mr-4 mb-0 text-gray-800"><?php echo $title ?></h1>
                     </div>
@@ -38,14 +38,9 @@
                             <?php echo $this->session->flashdata('success'); ?>
                         </div>
                     <?php endif; ?>
-
                     <?php $this->load->view("_partials/breadcrumb.php") ?>
-                    <!-- Content Row -->
 
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            <a class="btn btn-primary" href="<?= base_url("admin/DataGuru/tambahguru") ?>"><i class="fas fa-plus"></i> Tambah Data Guru</a>
-                        </div>
+                    <!-- Content Row -->
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
@@ -53,36 +48,32 @@
                                     <thead>
                                         <tr>
                                             <th style="text-align:center">No.</th>
-                                            <th style="text-align:center">NIP</th>
-                                            <th style="text-align:center">Nama Guru</th>
-                                            <th style="text-align:center">Jenis Kelamin</th>
-                                            <th style="text-align:center">Jurusan</th>
-                                            <th style="text-align:center">Opsi</th>
+                                            <th style="text-align:center">Nama DUDI</th>
+                                            <th style="text-align:center">Alamat DUDI</th>
+                                            <th style="text-align:center">Jumlah Siswa</th>
+                                            <th style="text-align:center">Detail</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 1;
-                                        foreach ($data_guru as $dtguru) : ?>
+                                        foreach ($pelaksanaanpkl as $pelaksanaan) :
+                                        ?>
                                             <tr>
                                                 <td width="25" style="text-align:center">
                                                     <?php echo $i ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $dtguru->id_guru ?>
+                                                    <?php echo $pelaksanaan->nama_dudi; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $dtguru->nama_guru ?>
+                                                    <?php echo $pelaksanaan->alamat_dudi; ?>
                                                 </td>
-                                                <td style="text-align:center">
-                                                    <?php echo $dtguru->jenis_kelamin ?>
+                                                <td width="100" style="text-align:center">
+                                                    <?php echo $pelaksanaan->jumlah_siswa; ?>
                                                 </td>
-                                                <td style="text-align:center">
-                                                    <?php echo $dtguru->nama_jurusan ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <a href="<?= base_url('admin/DataGuru/editdataguru/' . $dtguru->id_gr) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Ubah</a>
-                                                    <a onclick="deleteConfirm('<?= base_url('admin/DataGuru/hapusdataguru/' . $dtguru->id_gr) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                                <td width="175" style="text-align:center">
+                                                    <a href="<?= base_url('admin/HistoryPelaksanaanPKL/listkelompokpkl/' . $pelaksanaan->id_dudi) ?>" class="btn btn-small"><i class="fas fa-user-cog"></i> Detail</a>
                                                 </td>
                                                 <?php $i++ ?>
                                             </tr>
@@ -106,6 +97,8 @@
     <?php $this->load->view("_partials/footer.php") ?>
     <!-- End of Footer -->
 
+    </div>
+
     <!-- Scroll to Top Button-->
     <?php $this->load->view("_partials/scrolltop.php") ?>
 
@@ -127,7 +120,6 @@
             $('#deleteModal').modal();
         }
     </script>
-
 </body>
 
 </html>

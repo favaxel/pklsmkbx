@@ -42,6 +42,7 @@ class datasiswa_model extends CI_Model
     public function getAll()
     {
         $this->db->join('jurusan', 'jurusan.id_jurusan = data_siswa.id_jurusan');
+        $this->db->order_by('nama_jurusan','ASC');
         return $this->db->get($this->_table)->result();
     }
     function get_data_jurusan()

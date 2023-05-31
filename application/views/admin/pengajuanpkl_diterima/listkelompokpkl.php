@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta http-equiv="refresh" content="300">
-
+<!-- <script type="text/javascript" src= https://code.jquery.com/jquery-3.7.0.min.js></script>
+<script type="text/javascript">
+    function printPengajuan(pengajuan) {
+        var printPage = document.getElementById(pengajuan).innerHTML;
+        var oriPage = document.body.innerHTML;
+        document.body.innerHTML = printPage;
+        window.print();
+        document.body.innerHTML = oriPage;
+    }
+</script> -->
 <head>
     <?php $this->load->view("_partials/head.php") ?>
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"> -->
-
 </head>
 
 <body id="page-top">
@@ -29,47 +34,40 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-
                 <div class="container-fluid">
-                    <!-- Page Heading -->
 
+                    <!-- Page Heading -->
+                    <?php $this->load->view("_partials/breadcrumb.php") ?>
+
+                    <!-- Content Row -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-2">
                         <h1 class="h2 mr-4 mb-0 text-gray-800"><?php echo $title ?></h1>
                     </div>
-                    <?php if ($this->session->flashdata('success')) : ?>
-                        <div class="alert alert-success" role="alert">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                            <?php echo $this->session->flashdata('success'); ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php $this->load->view("_partials/breadcrumb.php") ?>
-                    <!-- Content Row -->
-                    <div class="container">
-                        <div class="row" style="margin-top: 50px;">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <div class="form-group">
-                                            <label>filter jurusan</label>
-                                            <select class="form-control jurusan" name="">
-                                                <option>-- Pilih --</option>
-                                                <option value="TKJ">TKJ</option>
-                                                <option value="TKRO">TKRO</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                     <div class="card mb-3">
+                        <div class="card-header">
+                            <a  class="btn btn-secondary" href="<?= base_url('admin/Pkl_Pengajuan_Diterima/') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                        </div>
+                        <div class="card-body">
+
+                            <?php foreach ($pelaksanaanpkl as $pelaksanaan) : ?>
+                                <div class="form-group">
+                                    <label for="nama_dudi">Nama DUDI</label>
+                                    <input class="form-control <?php echo form_error('nama_dudi') ? 'is-invalid' : '' ?>" type="text" name="nama_dudi" readonly placeholder="Nama DUDI" value="<?php echo $pelaksanaan->nama_dudi ?>" />
+                                </div>
+                                <?php break; ?>
+                            <?php endforeach; ?>
+                        <!-- Content Row -->
+                        <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table id="tabelData" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                                <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th style="text-align:center">No.</th>
                                             <th style="text-align:center">Nama Siswa</th>
                                             <th style="text-align:center">Kelas</th>
-                                            <th style="text-align:center">Nama DUDI</th>
+                                            <th style="text-align:center">Jurusan</th>
                                             <th style="text-align:center">Durasi</th>
                                             <th style="text-align:center">Tanggal Masuk</th>
                                             <th style="text-align:center">Tanggal Keluar</th>
@@ -79,84 +77,100 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
+                                    <?php
                                         $i = 1;
-                                        foreach ($pengajuanpkl as $pengajuan) : ?>
+                                        foreach ($pelaksanaanpkl as $pelaksanaan) :
+                                        ?>
                                             <tr>
-                                                
-                                                <td style="text-align:center">
+                                                <td width="25" style="text-align:center">
                                                     <?php echo $i ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $pengajuan->nama_siswa; ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <?php echo $pengajuan->kelas; ?>
+                                                    <?php echo $pelaksanaan->nama_siswa; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $pengajuan->nama_dudi; ?>
+                                                    <?php echo $pelaksanaan->kelas; ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $pengajuan->durasi; ?>
+                                                    <?php echo $pelaksanaan->nama_jurusan; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $pelaksanaan->durasi; ?>
                                                     bulan
                                                 </td>
                                                 <td style="text-align:center">
-                                                    <?php if ($pengajuan->tanggal_masuk == "2023-01-01") {
+                                                    <?php if ($pelaksanaan->tanggal_masuk == "2023-01-01") {
                                                         echo "Belum ditentukan";
                                                     } else {
-                                                        echo date("d-m-Y", strtotime($pengajuan->tanggal_masuk));
+                                                        echo date("d-m-Y", strtotime($pelaksanaan->tanggal_masuk));
                                                     } ?>
                                                 </td>
                                                 <td style="text-align:center">
-                                                    <?php if ($pengajuan->tanggal_masuk == "2023-01-01") {
+                                                    <?php if ($pelaksanaan->tanggal_masuk == "2023-01-01") {
                                                         echo "Belum ditentukan";
                                                     } else {
-                                                        echo date("d-m-Y", strtotime($pengajuan->tanggal_keluar));
+                                                        echo date("d-m-Y", strtotime($pelaksanaan->tanggal_keluar));
                                                     } ?>
                                                 </td>
                                                 <td>
                                                     <?php
-                                                    if ($pengajuan->id_guru == 0) { ?>
+                                                    if ($pelaksanaan->id_guru == 0) { ?>
                                                         Belum ditunjuk
                                                     <?php } else { ?>
-                                                        <?php echo $pengajuan->nama_guru; ?>
+                                                        <?php echo $pelaksanaan->nama_guru; ?>
                                                     <?php } ?>
                                                 </td>
                                                 <td style="text-align:center">
                                                     <?php
-                                                    if ($pengajuan->status_validasi == 'Diterima') { ?>
-                                                        <span class="badge badge-success"><?php echo $pengajuan->status_validasi; ?></span>
+                                                    if ($pelaksanaan->status_validasi == 'Diterima') { ?>
+                                                        <span class="badge badge-success"><?php echo $pelaksanaan->status_validasi; ?></span>
                                                     <?php } ?>
                                                     <?php
-                                                    if ($pengajuan->status_validasi == 'Ditolak') { ?>
-                                                        <span class=" badge badge-danger"><?php echo $pengajuan->status_validasi; ?></span>
+                                                    if ($pelaksanaan->status_validasi == 'Ditolak') { ?>
+                                                        <span class=" badge badge-danger"><?php echo $pelaksanaan->status_validasi; ?></span>
                                                     <?php } ?>
                                                     <?php
-                                                    if ($pengajuan->status_validasi == 'Proses Pengajuan') { ?>
-                                                        <span class=" badge badge-info"><?php echo $pengajuan->status_validasi; ?></span>
+                                                    if ($pelaksanaan->status_validasi == 'Proses Pengajuan') { ?>
+                                                        <span class=" badge badge-info"><?php echo $pelaksanaan->status_validasi; ?></span>
                                                     <?php } ?>
                                                     <?php
-                                                    if ($pengajuan->status_validasi == 'Belum Tervalidasi') { ?>
-                                                        <span class="badge badge-warning"><?php echo $pengajuan->status_validasi; ?></span>
+                                                    if ($pelaksanaan->status_validasi == 'Belum Tervalidasi') { ?>
+                                                        <span class="badge badge-warning"><?php echo $pelaksanaan->status_validasi; ?></span>
+                                                    <?php } ?>
+                                                    <?php
+                                                    if ($pelaksanaan->status_validasi == 'Selesai') { ?>
+                                                        <span class="badge badge-dark"><?php echo $pelaksanaan->status_validasi; ?></span>
                                                     <?php } ?>
                                                 </td>
                                                 <td style="text-align:center">
-                                                    <a href="<?= base_url('admin/PengajuanPKL/editpengajuanpkl/' . $pengajuan->id_pengajuanpkl) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Ubah</a>
+                                                    <a href="<?= base_url('admin/Pkl_Pengajuan_Diterima/editpengajuanpkl/' . $pelaksanaan->id_pengajuanpkl) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Ubah</a>
                                                 </td>
                                                 <?php $i++ ?>
                                             </tr>
                                         <?php endforeach; ?>
+
                                     </tbody>
+                                    
                                 </table>
+                               
                             </div>
                         </div>
                     </div>
                 </div>
+            </div> 
+            <!-- <div class="p-2 bd-highlight">
+                            <a class="btn btn-primary"  href="<?= base_url('admin/Pkl_Proses_Pengajuan/cetak_pengajuan_pkl/' . $pelaksanaan->id_dudi) ?>"><i class="fas fa-print"></i> Cetak Pengajuan PKL </a>
+                                    </div> -->
+            <!-- End of Main Content -->
+                            
+                </div>
+                <!-- End of Page Content -->
+
             </div>
             <!-- End of Main Content -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -165,42 +179,20 @@
     <?php $this->load->view("_partials/footer.php") ?>
     <!-- End of Footer -->
 
-    </div>
-
     <!-- Scroll to Top Button-->
     <?php $this->load->view("_partials/scrolltop.php") ?>
 
     <!-- Logout Modal-->
     <?php $this->load->view("_partials/modal.php") ?>
 
-    <!-- Custom Bootstrap Script-->
+    <!-- Bootstrap core JavaScript-->
     <?php $this->load->view("_partials/js.php") ?>
 
     <script type="text/javascript">
         $(document).ready(function() {
-            $('#tabelData').DataTable();
+            $('#table_id').DataTable();
         });
     </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#tabelData').DataTable();
-            function filterData () {
-                $('#tabelData').DataTable().search(
-                    $('.jurusan').val()
-                    ).draw();
-            }
-            $('.jurusan').on('change', function () {
-                filterData();
-            });
-        });
-    </script>
-    <script>
-        function deleteConfirm(url) {
-            $('#btn-delete').attr('href', url);
-            $('#deleteModal').modal();
-        }
-    </script>
-
 </body>
 
 </html>

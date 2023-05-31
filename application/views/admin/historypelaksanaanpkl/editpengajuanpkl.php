@@ -1,3 +1,6 @@
+
+<style>
+</style>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,20 +37,25 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-2">
                         <h1 class="h2 mr-4 mb-0 text-gray-800"><?php echo $title ?></h1>
                     </div>
-
+                    <?php if ($this->session->flashdata('success')) : ?>
+                        <div class="alert alert-success" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <?php echo $this->session->flashdata('success'); ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="card mb-3">
                         <div class="card-header">
-                            <a href="<?= base_url('admin/PengajuanPKL/') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                        <a href="<?= base_url('admin/HistoryPelaksanaanPKL/listkelompokpkl/' . $pelaksanaanpkl->id_dudi) ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
                         </div>
                         <div class="card-body">
 
                             <form action="" method="post">
 
-                                <input type="hidden" name="id_pengajuanpkl" value="<?php echo $pengajuanpkl->id_pengajuanpkl ?>" />
+                                <input type="hidden" name="id_pengajuanpkl" value="<?php echo $pelaksanaanpkl->id_pengajuanpkl ?>" />
 
                                 <div class="form-group">
                                     <label for="nama_siswa">Nama Siswa</label>
-                                    <input class="form-control <?php echo form_error('nama_siswa') ? 'is-invalid' : '' ?>" name="nama_siswa" readonly value="<?php echo $pengajuanpkl->nama_siswa ?>" />
+                                    <input class="form-control <?php echo form_error('nama_siswa') ? 'is-invalid' : '' ?>" name="nama_siswa" readonly value="<?php echo $pelaksanaanpkl->nama_siswa ?>" />
                                     <div class="invalid-feedback">
                                         <?php echo form_error('nama_siswa') ?>
                                     </div>
@@ -55,7 +63,7 @@
 
                                 <div class="form-group">
                                     <label for="kelas">Kelas</label>
-                                    <input class="form-control <?php echo form_error('kelas') ? 'is-invalid' : '' ?>" name="kelas" readonly value="<?php echo $pengajuanpkl->kelas ?>" />
+                                    <input class="form-control <?php echo form_error('kelas') ? 'is-invalid' : '' ?>" name="kelas" readonly value="<?php echo $pelaksanaanpkl->kelas ?>" />
                                     <div class="invalid-feedback">
                                         <?php echo form_error('kelas') ?>
                                     </div>
@@ -63,7 +71,7 @@
 
                                 <div class="form-group">
                                     <label for="nama_dudi">DUDI yang dipilih</label>
-                                    <input class="form-control <?php echo form_error('nama_dudi') ? 'is-invalid' : '' ?>" name="nama_dudi" readonly value="<?php echo $pengajuanpkl->nama_dudi ?>" />
+                                    <input class="form-control <?php echo form_error('nama_dudi') ? 'is-invalid' : '' ?>" name="nama_dudi" readonly value="<?php echo $pelaksanaanpkl->nama_dudi ?>" />
                                     <div class="invalid-feedback">
                                         <?php echo form_error('nama_dudi') ?>
                                     </div>
@@ -72,14 +80,14 @@
                                 <div class="form-group row row-cols-1 row-cols-sm-2">
                                 <div class="col">
                                     <label for="durasi">durasi *</label>
-                                    <input class="form-control <?php echo form_error('durasi') ? 'is-invalid' : '' ?>" type="text" name="durasi" placeholder="bulan" value="<?php echo $pengajuanpkl->durasi ?>"></input>
+                                    <input class="form-control <?php echo form_error('durasi') ? 'is-invalid' : '' ?>" type="text" name="durasi" placeholder="bulan" value="<?php echo $pelaksanaanpkl->durasi ?>"></input>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('durasi') ?>
                                     </div>
                                     </div>
                                     <div class="col">
                                         <label for="tanggal_masuk">Tanggal Masuk</label>
-                                        <input class="form-control <?php echo form_error('tanggal_masuk') ? 'is-invalid' : '' ?>" type="date" id="datepicker" name="tanggal_masuk" value="<?php echo $pengajuanpkl->tanggal_masuk ?>" />
+                                        <input class="form-control <?php echo form_error('tanggal_masuk') ? 'is-invalid' : '' ?>" type="date" id="datepicker" name="tanggal_masuk" value="<?php echo $pelaksanaanpkl->tanggal_masuk ?>" />
                                         <div class="invalid-feedback">
                                             <?php echo form_error('tanggal_masuk') ?>
                                         </div>
@@ -87,7 +95,7 @@
 
                                     <div class="col">
                                         <label for="tanggal_keluar">Tanggal Keluar</label>
-                                        <input class="form-control <?php echo form_error('tanggal_keluar') ? 'is-invalid' : '' ?>" type="date" id="datepicker" name="tanggal_keluar" value="<?php echo $pengajuanpkl->tanggal_keluar ?>" />
+                                        <input class="form-control <?php echo form_error('tanggal_keluar') ? 'is-invalid' : '' ?>" type="date" id="datepicker" name="tanggal_keluar" value="<?php echo $pelaksanaanpkl->tanggal_keluar ?>" />
                                         <div class="invalid-feedback">
                                             <?php echo form_error('tanggal_keluar') ?>
                                         </div>
@@ -98,7 +106,7 @@
                                 <div class="form-group">
                                     <label for="id_guru">Guru Pembimbing</label>
                                     <select class="form-control <?php echo form_error('id_guru') ? 'is-invalid' : '' ?>" name="id_guru">
-                                        <option value="<?php echo $pengajuanpkl->id_guru; ?>">Pilih Guru : <?php echo $pengajuanpkl->nama_guru; ?> </option>
+                                        <option value="<?php echo $pelaksanaanpkl->id_guru; ?>">Pilih Guru : <?php echo $pelaksanaanpkl->nama_guru; ?> </option>
                                         <?php foreach ($data_guru as $row) { ?>
                                             <option value="<?php echo $row->id_guru; ?>"><?php echo $row->nama_guru; ?></option>
                                         <?php } ?>
@@ -111,17 +119,18 @@
                                 <div class="form-group">
                                     <label for="status_validasi">Status Validasi</label>
                                     <select class="form-control <?php echo form_error('status_validasi') ? 'is-invalid' : '' ?>" name="status_validasi">
-                                        <option value="<?php echo $pengajuanpkl->status_validasi; ?>">---Status Validasi-- : <?php echo $pengajuanpkl->status_validasi; ?></option>
+                                        <option value="<?php echo $pelaksanaanpkl->status_validasi; ?>">---Status Validasi-- : <?php echo $pelaksanaanpkl->status_validasi; ?></option>
                                         <option value="Proses Pengajuan">Proses Pengajuan</option>
                                         <option value="Diterima">Diterima</option>
                                         <option value="Ditolak">Ditolak</option>
+                                        <option value="Selesai">Selesai</option>
                                     </select>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('status_validasi') ?>
                                     </div>
                                 </div>
 
-                                <input class="btn btn-primary" type="submit" name="btn" value="Simpan" />
+                                <input class="btn btn-primary" type="submit" name="btn" value="Simpan" data-target="#tambahakun"/>
                             </form>
 
                         </div>

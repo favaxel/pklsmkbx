@@ -110,7 +110,12 @@
                                     <hr>
                                     <p class="mb-0">Jika terdapat pernyataan terkait PKL, silahkan hubungi Koordinator PKL, Bapak/Ibu Guru, atau Koordinator Jurusan di Program Studi Anda</p>
                                 </div>
+                            
+                            <?php } elseif ($permohonanpkl->status_validasi == 'Selesai') {  ?>
 
+                                <div class="alert alert-success" role="alert">
+                                    <h4 class="alert-heading"><strong>Anda Telah Selesai Melaksanakan Praktik Kerja Lapangan (PKL)</strong></h4>
+                                </div>
                             <?php } elseif ($permohonanpkl->status_validasi == 'Belum Tervalidasi') { ?>
 
                                 <div class="alert alert-secondary" role="alert">
@@ -123,6 +128,7 @@
                                 </div>
 
                             <?php } ?>
+                            
 
                             <div class="d-sm-flex align-items-center justify-content-between mb-2">
                                 <h4 class="h4 mr-4 mt-4 mb-1 text-gray-800"> Daftar Permohonan PKL Sebelumnya</h4>

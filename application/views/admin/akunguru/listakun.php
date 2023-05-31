@@ -38,51 +38,74 @@
                             <?php echo $this->session->flashdata('success'); ?>
                         </div>
                     <?php endif; ?>
-
                     <?php $this->load->view("_partials/breadcrumb.php") ?>
                     <!-- Content Row -->
 
                     <div class="card mb-3">
                         <div class="card-header">
-                            <a class="btn btn-primary" href="<?= base_url("admin/DataGuru/tambahguru") ?>"><i class="fas fa-plus"></i> Tambah Data Guru</a>
+                            <a class="btn btn-primary" href="<?= base_url("admin/AkunGuru/tambahakun") ?>"><i class="fas fa-plus"></i> Tambah Akun Pengguna</a>
                         </div>
-                    <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th style="text-align:center">No.</th>
-                                            <th style="text-align:center">NIP</th>
-                                            <th style="text-align:center">Nama Guru</th>
-                                            <th style="text-align:center">Jenis Kelamin</th>
+                                            <th style="text-align:center">Nama Pengguna</th>
+                                            <th style="text-align:center">Username</th>
+                                            <th style="text-align:center">Password</th>
                                             <th style="text-align:center">Jurusan</th>
-                                            <th style="text-align:center">Opsi</th>
+                                            <th style="text-align:center">Role</th>
+                                            <th style="text-align:center">opsi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 1;
-                                        foreach ($data_guru as $dtguru) : ?>
+                                        foreach ($pengguna as $akun) : ?>
                                             <tr>
                                                 <td width="25" style="text-align:center">
                                                     <?php echo $i ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $dtguru->id_guru ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $dtguru->nama_guru ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <?php echo $dtguru->jenis_kelamin ?>
+                                                    
+                                                    <?php echo $akun->nama_guru ?>
+                                                    
                                                 </td>
                                                 <td style="text-align:center">
-                                                    <?php echo $dtguru->nama_jurusan ?>
+                                                    <?php echo $akun->username ?>
                                                 </td>
                                                 <td style="text-align:center">
-                                                    <a href="<?= base_url('admin/DataGuru/editdataguru/' . $dtguru->id_gr) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Ubah</a>
-                                                    <a onclick="deleteConfirm('<?= base_url('admin/DataGuru/hapusdataguru/' . $dtguru->id_gr) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                                    <?php echo $akun->password ?>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <?php echo $akun->nama_jurusan ?>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <?php
+                                                    if ($akun->role == 'siswa') { ?>
+                                                        Siswa
+                                                    <?php } ?>
+                                                    <?php
+                                                    if ($akun->role == 'pembimbing_dudi') { ?>
+                                                        Pembimbing DUDI
+                                                    <?php } ?>
+                                                    <?php
+                                                    if ($akun->role == 'guru') { ?>
+                                                        Guru
+                                                    <?php } ?>
+                                                    <?php
+                                                    if ($akun->role == 'koordinator_jurusan') { ?>
+                                                        Koordinator Jurusan
+                                                    <?php } ?>
+                                                    <?php
+                                                    if ($akun->role == 'admin') { ?>
+                                                        Ketua Jurusan
+                                                    <?php } ?>
+                                                </td>
+                                                <td style="text-align:center">
+                                                    <a href="<?= base_url('admin/AkunGuru/editdataakun/' . $akun->id_pengguna) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Ubah</a>
+                                                    <a onclick="deleteConfirm('<?= base_url('admin/AkunGuru/hapusdataakun/' . $akun->id_pengguna) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
                                                 </td>
                                                 <?php $i++ ?>
                                             </tr>
@@ -91,13 +114,18 @@
                                 </table>
                             </div>
                         </div>
+
                     </div>
+                    <!-- End of Main Content -->
+
                 </div>
+                <!-- End of Page Content -->
+
             </div>
             <!-- End of Main Content -->
 
         </div>
-        <!-- End of Content Wrapper -->
+        <!-- End of Page Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->

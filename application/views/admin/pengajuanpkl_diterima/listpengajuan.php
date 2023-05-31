@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<meta http-equiv="refresh" content="300">
 
 <head>
     <?php $this->load->view("_partials/head.php") ?>
@@ -25,10 +26,9 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-
                 <div class="container-fluid">
-                    <!-- Page Heading -->
 
+                    <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-2">
                         <h1 class="h2 mr-4 mb-0 text-gray-800"><?php echo $title ?></h1>
                     </div>
@@ -39,70 +39,41 @@
                         </div>
                     <?php endif; ?>
                     <?php $this->load->view("_partials/breadcrumb.php") ?>
-                    <!-- Content Row -->
 
+                    <!-- Content Row -->
                     <div class="card mb-3">
-                        <div class="card-header">
-                            <a class="btn btn-primary" href="<?= base_url("admin/Akun/tambahakun") ?>"><i class="fas fa-plus"></i> Tambah Akun Pengguna</a>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table id="table_id" class="table table-striped table-bordered" cellspacing="0" width="100%">
                                     <thead>
                                         <tr>
                                             <th style="text-align:center">No.</th>
-                                            <th style="text-align:center">Nama Pengguna</th>
-                                            <th style="text-align:center">Username</th>
-                                            <th style="text-align:center">Password</th>
-                                            <th style="text-align:center">Role</th>
+                                            <th style="text-align:center">Nama DUDI</th>
+                                            <th style="text-align:center">Alamat DUDI</th>
+                                            <th style="text-align:center">Jumlah Siswa</th>
                                             <th style="text-align:center">opsi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 1;
-                                        foreach ($pengguna as $akun) : ?>
+                                        foreach ($pelaksanaanpkl as $pelaksanaan) :
+                                        ?>
                                             <tr>
                                                 <td width="25" style="text-align:center">
                                                     <?php echo $i ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $akun->nama_admin ?>
-                                                    <?php echo $akun->nama_siswa ?>
-                                                    <?php echo $akun->nama_guru ?>
-                                                    <?php echo $akun->nama_dudi ?>
+                                                    <?php echo $pelaksanaan->nama_dudi; ?>
                                                 </td>
-                                                <td style="text-align:center">
-                                                    <?php echo $akun->username ?>
+                                                <td>
+                                                    <?php echo $pelaksanaan->alamat_dudi; ?>
                                                 </td>
-                                                <td style="text-align:center">
-                                                    <?php echo $akun->password ?>
+                                                <td width="50" style="text-align:center">
+                                                    <?php echo $pelaksanaan->jumlah_siswa; ?>
                                                 </td>
-                                                <td style="text-align:center">
-                                                    <?php
-                                                    if ($akun->role == 'siswa') { ?>
-                                                        Siswa
-                                                    <?php } ?>
-                                                    <?php
-                                                    if ($akun->role == 'pembimbing_dudi') { ?>
-                                                        Pembimbing DUDI
-                                                    <?php } ?>
-                                                    <?php
-                                                    if ($akun->role == 'guru') { ?>
-                                                        Guru
-                                                    <?php } ?>
-                                                    <?php
-                                                    if ($akun->role == 'koordinator_jurusan') { ?>
-                                                        Koordinator Jurusan
-                                                    <?php } ?>
-                                                    <?php
-                                                    if ($akun->role == 'admin') { ?>
-                                                        Ketua Jurusan
-                                                    <?php } ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <a href="<?= base_url('admin/Akun/editdataakun/' . $akun->id_pengguna) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Ubah</a>
-                                                    <a onclick="deleteConfirm('<?= base_url('admin/Akun/hapusdataakun/' . $akun->id_pengguna) ?>')" href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
+                                                <td width="270" style="text-align:center">
+                                                    <a href="<?= base_url('admin/Pkl_Pengajuan_Diterima/listkelompokpkl/' . $pelaksanaan->id_dudi) ?>"class="btn btn-small text-info"><i class="fas fa-user-cog"></i> Detail</a>
                                                 </td>
                                                 <?php $i++ ?>
                                             </tr>
@@ -111,18 +82,13 @@
                                 </table>
                             </div>
                         </div>
-
                     </div>
-                    <!-- End of Main Content -->
-
                 </div>
-                <!-- End of Page Content -->
-
             </div>
             <!-- End of Main Content -->
 
         </div>
-        <!-- End of Page Wrapper -->
+        <!-- End of Content Wrapper -->
 
     </div>
     <!-- End of Page Wrapper -->
@@ -130,6 +96,8 @@
     <!-- Footer -->
     <?php $this->load->view("_partials/footer.php") ?>
     <!-- End of Footer -->
+
+    </div>
 
     <!-- Scroll to Top Button-->
     <?php $this->load->view("_partials/scrolltop.php") ?>
@@ -152,7 +120,6 @@
             $('#deleteModal').modal();
         }
     </script>
-
 </body>
 
 </html>

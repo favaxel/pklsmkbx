@@ -37,10 +37,10 @@
 
                     <div class="card mb-3">
                         <div class="card-header">
-                            <a href="<?= base_url('admin/Akun/') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                            <a href="<?= base_url('admin/AkunAdmin/') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
                         </div>
                         <div class="card-body">
-                      <form action="<?= base_url('admin/Akun/tambahakun') ?>" method="post">
+                      <form action="<?= base_url('admin/AkunAdmin/tambahakun') ?>" method="post">
 
                           <div class="form-group">
                               <label for="id">id</label>

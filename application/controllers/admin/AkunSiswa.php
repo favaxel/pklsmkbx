@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Akun extends CI_Controller
+class AkunSiswa extends CI_Controller
 {
     public function __construct()
     {
@@ -18,9 +18,9 @@ class Akun extends CI_Controller
     public function index()
     {
         $data['title'] = 'Akun Pengguna';
-        $data['pengguna'] = $this->akun_model->getAll();
+        $data['pengguna'] = $this->akun_model->getSiswa();
         $data['data_dudi'] = $this->akun_model->getAkun();
-        $this->load->view("admin/akun/listakun", $data);
+        $this->load->view("admin/akunsiswa/listakun", $data);
     }
 
     public function tambahakun()
@@ -32,10 +32,10 @@ class Akun extends CI_Controller
         if ($validation->run()) {
             $tambahakun->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect('admin/Akun');
+            redirect('admin/AkunSiswa');
         }
         $data['title'] = 'Tambah Akun Pengguna';
-        $this->load->view("admin/akun/daftarakun", $data);
+        $this->load->view("admin/akunsiswa/daftarakun", $data);
     }
     public function editdataakun($id = null)
     {
@@ -48,12 +48,12 @@ class Akun extends CI_Controller
         if ($validation->run()) {
             $dataakun->update();
             $this->session->set_flashdata('success', 'Berhasil diubah');
-            redirect('admin/Akun');
+            redirect('admin/AkunSiswa');
         }
         $data['title'] = 'Ubah Data Akun';
         $data["dataakun"] = $dataakun->getById($id);
         if (!$data["dataakun"]) show_404();
-        $this->load->view("admin/akun/editakun", $data);
+        $this->load->view("admin/akunsiswa/editakun", $data);
     }
 
     public function hapusdataakun($id = null)
@@ -61,7 +61,21 @@ class Akun extends CI_Controller
         if (!isset($id)) show_404();
         if ($this->akun_model->delete($id)) {
             $this->session->set_flashdata('success', 'Berhasil dihapus');
-            redirect('admin/Akun');
+            redirect('admin/AkunSiswa');
         }
+    }
+    public function cetak_akun_siswa($id = null)
+    {
+        $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [215, 330]]);
+        $mpdf->AddPageByArray([
+            'margin-left' => 20,
+            'margin-right' => 20,
+            'margin-top' => 20,
+            'margin-bottom' => 25,
+        ]);
+        $data_akun = $this->akun_model->getSiswa();
+        $data = $this->load->view('pdf/cetak_akun', ['pengguna'=> $data_akun], TRUE);
+        $mpdf->WriteHTML($data);
+        $mpdf->Output('Akun Siswa.pdf', 'D');
     }
 }

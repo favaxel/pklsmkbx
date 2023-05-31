@@ -2,7 +2,7 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class PengajuanPKL extends CI_Controller
+class Pkl_Pengajuan_Belum_tervalidasi extends CI_Controller
 {
     public function __construct()
     {
@@ -17,12 +17,12 @@ class PengajuanPKL extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Pengajuan PKL';
-        $data['pengajuanpkl'] = $this->pengajuanpkl_model->getAll();
+        $data['title'] = 'Pengajuan PKL Belum Tervalidasi';
+        $data['pengajuanpkl'] = $this->pengajuanpkl_model->getBelum();
         $data['data_guru'] = $this->pengajuanpkl_model->get_data_guru();
-        $this->load->view("admin/pengajuanpkl/listpengajuan", $data);
+        $this->load->view("admin/pengajuanpkl_belum_tervalidasi/listpengajuan", $data);
     }
-
+    
     public function editpengajuanpkl($id = null)
     {
         $data['title'] = 'Ubah Pengajuan PKL';
@@ -34,12 +34,12 @@ class PengajuanPKL extends CI_Controller
         if ($validation->run()) {
             $pengajuanpkl->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
-            redirect('admin/PengajuanPKL');
+            // redirect('admin/Pkl_Pengajuan_Belum_tervalidasi');
         }
 
         $data['data_guru'] = $this->pengajuanpkl_model->get_data_guru();
         $data["pengajuanpkl"] = $pengajuanpkl->getById($id);
         if (!$data["pengajuanpkl"]) show_404();
-        $this->load->view("admin/pengajuanpkl/editpengajuanpkl", $data);
+        $this->load->view("admin/pengajuanpkl_belum_tervalidasi/editpengajuanpkl", $data);
     }
 }

@@ -50,11 +50,11 @@
                                             <th style="text-align:center">Nama Siswa</th>
                                             <th style="text-align:center">Kelas</th>
                                             <th style="text-align:center">Tgl Pelaksanaan</th>
-                                            <th style="text-align:center">Topik Pekerjaan</th>
+                                            <th style="text-align:center">kegiatan</th>
                                             <th style="text-align:center">Dokumentasi</th>
-                                            <th style="text-align:center">Validasi</th>
+                                            <!-- <th style="text-align:center">Validasi</th>
                                             <th style="text-align:center">Catatan</th>
-                                            <th style="text-align:center">Opsi</th>
+                                            <th style="text-align:center">Opsi</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,12 +75,12 @@
                                                     <?php echo date("d-m-Y", strtotime($jurnal->tanggal)) ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $jurnal->topik_pekerjaan ?>
+                                                    <?php echo $jurnal->kegiatan ?>
                                                 </td>
                                                 <td style="text-align:center">
                                                     <img src="<?php echo base_url('dokumentasi/' . $jurnal->dokumentasi) ?>" width="250" height="250" />
                                                 </td>
-                                                <td style="text-align:center">
+                                                <!-- <td style="text-align:center">
                                                     <?php
                                                     if ($jurnal->status == 'Tervalidasi') { ?>
                                                         <span class="badge badge-success"><?php echo $jurnal->status; ?></span>
@@ -96,10 +96,10 @@
                                                 </td>
                                                 <td>
                                                     <?php echo $jurnal->catatan ?>
-                                                </td>
-                                                <td style="text-align:center">
+                                                </td> -->
+                                                <!-- <td style="text-align:center">
                                                     <a href="<?= base_url('pembimbingdudi/ValidasiJurnalPKL/editvalidasijurnalpkl/' . $jurnal->id_jurnal_pkl) ?>" class="btn btn-primary text-white"><i class="fas fa-clipboard-check"></i> Validasi</a>
-                                                </td>
+                                                </td> -->
                                                 <?php $i++ ?>
                                             </tr>
                                         <?php endforeach; ?>

@@ -36,6 +36,8 @@ class dataguru_model extends CI_Model
 
     public function getAll()
     {
+        $this->db->join('jurusan', 'jurusan.id_jurusan = data_guru.id_jurusan');
+        $this->db->order_by('nama_jurusan', 'ASC');
         return $this->db->get($this->_table)->result();
     }
     function get_data_jurusan()

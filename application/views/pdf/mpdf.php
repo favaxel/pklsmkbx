@@ -4,13 +4,13 @@
 <html>
 <script type="text/javascript" src= https://code.jquery.com/jquery-3.7.0.min.js></script>
 <script type="text/javascript">
-    function printPengajuan(pengajuan) {
-        var printPage = document.getElementById(pengajuan).innerHTML;
-        var oriPage = document.body.innerHTML;
-        document.body.innerHTML = printPage;
-        window.print();
-        document.body.innerHTML = oriPage;
-    }
+    // function printPengajuan(pengajuan) {
+    //     var printPage = document.getElementById(pengajuan).innerHTML;
+    //     var oriPage = document.body.innerHTML;
+    //     document.body.innerHTML = printPage;
+    //     window.print();
+    //     document.body.innerHTML = oriPage;
+    // }
 </script>
 <head>
     <title>cetak pengajuan pkl</title>
@@ -135,11 +135,11 @@ p {
             <table>
             <tbody>
             <tr><td></td><td></td><td></td><td height =" 10px">Probolinggo,<?= date('d F Y'); ?></td>
-            <tr><td>Nomor</td><td>:</td><td width="320px">420/228/101.6.3.26/2022</td>
-            <tr><td>Lampiran</td><td>:</td><td>-</td></tr><td>kepada</td>
-            <?php foreach ($pelaksanaanpkl as $pelaksanaan) : ?>
+            <tr><td>Nomor</td><td>:</td><td width="320px">420/228/101.6.3.26/2023</td>
+            <tr><td>Lampiran</td><td>:</td><td>-</td></tr><td>Kepada</td>
+            <?php foreach ($pengajuanpkl as $pengajuan) : ?>
             <tr><td>Perihal</td><td>:</td><td>Permohonan Tempat </td><td>Yth.Pimpinan</td></tr>
-            <tr><td></td><td></td><td>Praktik Kerja Lapangan (PKL)</td><td><?php echo $pelaksanaan->nama_dudi ?></td>
+            <tr><td></td><td></td><td>Praktik Kerja Lapangan (PKL)</td><td><?php echo $pengajuan->nama_dudi ?></td>
             <?php break; ?>
             <?php endforeach; ?>
             <tr><td></td><td></td><td></td><td height =" 10px">di Tempat</td>
@@ -151,7 +151,7 @@ p {
             <tr>
             <td>Dengan Hormat,</td>
             </tr>
-            <?php foreach ($pelaksanaanpkl as $pelaksanaan) : ?>
+            <?php foreach ($pengajuanpkl as $pengajuan) : ?>
             <tr>
                 <td class="justify paragraf">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dalam rangka memenuhi kurikulum dan melakasanakan program kerja
@@ -159,8 +159,8 @@ p {
                 SMKN 1 Banyuanyar, maka dengan ini kami memohon bantuan Bapak/Ibu untuk
                 memberikan izin kepada peserta didik SMKN 1 Banyuanyar untuk melaksanakan
                 kegiatan Praktik Kerja Lapangan (PKL) pada Instansi/Perusahaan yang Bapak/Ibu pimpin. 
-                Adapun rencana program kegiatan PKL tersebut akan berlangsung selama&nbsp;<?php echo $pelaksanaan->durasi ?>&nbsp;
-                bulan dimulai tanggal&nbsp;<?php echo date("d-m-Y", strtotime($pelaksanaan->tanggal_masuk)) ?>&nbsp;s.d&nbsp;<?php echo date("d-m-Y", strtotime($pelaksanaan->tanggal_keluar)) ?>.
+                Adapun rencana program kegiatan PKL tersebut akan berlangsung selama&nbsp;<?php echo $pengajuan->durasi ?>&nbsp;
+                bulan dimulai tanggal&nbsp;<?php echo date("d-m-Y", strtotime($pengajuan->tanggal_masuk)) ?>&nbsp;s.d&nbsp;<?php echo date("d-m-Y", strtotime($pengajuan->tanggal_keluar)) ?>.
                 </td>
             </tr>
             <?php break; ?>
@@ -177,18 +177,18 @@ p {
         <thead>
             <tr>
                 <th  width="10%">No</th>
-                <th width="30%">Nama Siswa</th>
-                <th width="30%">Kelas</th>
-                <th width="30%">Keterangan</th>
+                <th width="50%">Nama Siswa</th>
+                <th width="20%">Kelas</th>
+                <th width="20%">Keterangan</th>
             </tr>
         </thead>
         <tbody >
             <?php $i = 1;?>
-            <?php foreach ($pelaksanaanpkl as $pelaksanaan) : ?>
+            <?php foreach ($pengajuanpkl as $pengajuan) : ?>
             <tr>
                 <td class = "tb1"><?= $i; ?></td>
-                <td class = "tb1"><?php echo $pelaksanaan->nama_siswa ?></td>
-                <td class = "tb1"><?php echo $pelaksanaan->kelas ?></td>
+                <td class = "tb1"><?php echo $pengajuan->nama_siswa ?></td>
+                <td class = "tb1"><?php echo $pengajuan->kelas ?></td>
                 <td class = "tb1"></td>
             </tr>
             <?php $i++;

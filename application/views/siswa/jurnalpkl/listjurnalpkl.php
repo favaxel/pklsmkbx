@@ -46,14 +46,14 @@
                             <div class="card-body">
                                 <div class="alert alert-danger" role="alert">
                                     <h4 class="alert-heading"><strong>Maaf, Anda tidak diizinkan mengakses menu ini!</strong></h4>
-                                    <p>Karena pengajuan PKL Anda masih berstatus
+                                    <p>Karena pengajuan PKL Anda berstatus
                                         <?php if (empty($pengajuanpkl->status_validasi)) { ?>
                                             <strong> Belum mengajukan. </strong>
                                         <?php } else { ?>
                                             <strong><?php echo $pengajuanpkl->status_validasi ?></strong>.</p>
                                 <?php } ?>
                                 <hr>
-                                <p class="mb-0">Jika terdapat pernyataan terkait PKL, silahkan hubungi Koordinator PKL, Bapak/Ibu Guru, atau Koordinator Jurusan di Program Studi Anda</p>
+                                <p class="mb-0">Jika terdapat pernyataan terkait PKL, silahkan hubungi Koordinator PKL, Bapak/Ibu Guru, atau Ketua Jurusan di Program Studi Anda</p>
                                 </div>
                             </div>
                         <?php } else { ?>
@@ -72,7 +72,7 @@
                             <div class="card mb-3">
                                 <div class="card-header d-flex bd-highlight">
                                     <div class="mr-auto p-2 bd-highlight">
-                                        <a class="btn btn-light" href="<?= base_url("siswa/JurnalPKL/tambahjurnalpkl") ?>"><i class="fas fa-plus"></i> Tambah Data Jurnal PKL</a>
+                                        <a class="btn btn-primary" href="<?= base_url("siswa/JurnalPKL/tambahjurnalpkl") ?>"><i class="fas fa-plus"></i> Tambah Data Jurnal PKL</a>
                                     </div>
                                     <div class="p-2 bd-highlight">
                                         <a class="btn btn-light" href="<?= base_url("siswa/JurnalPKL/cetak_jurnal_pkl/" . $this->session->userdata('id_siswa')) ?>"><i class="fas fa-print"></i> Cetak Data Jurnal PKL </a>

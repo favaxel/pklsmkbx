@@ -24,13 +24,37 @@ class akun_model extends CI_Model
         ];
     }
 
-    public function getAll()
+    public function getAdmin()
     {
         $this->db->join('data_admin', 'data_admin.id_admin = pengguna.id', 'left');
-        $this->db->join('data_guru', 'data_guru.id_guru = pengguna.id', 'left');
+        // $this->db->join('data_guru', 'data_guru.id_guru = pengguna.id', 'left');
+        // $this->db->join('data_siswa', 'data_siswa.id_siswa = pengguna.id', 'left');
+        // $this->db->join('data_dudi', 'data_dudi.id_dudi = pengguna.id', 'left');
+        $this->db->join('jurusan', 'jurusan.id_jurusan = data_admin.id_jurusan');
+        $this->db->order_by('nama_jurusan', 'asc');
+        $query = $this->db->get($this->_table);
+        return $query->result();
+    }
+    public function getSiswa()
+    {
+        // $this->db->join('data_admin', 'data_admin.id_admin = pengguna.id', 'left');
+        // $this->db->join('data_guru', 'data_guru.id_guru = pengguna.id', 'left');
         $this->db->join('data_siswa', 'data_siswa.id_siswa = pengguna.id', 'left');
-        $this->db->join('data_dudi', 'data_dudi.id_dudi = pengguna.id', 'left');
-        $this->db->order_by('id', 'asc');
+        // $this->db->join('data_dudi', 'data_dudi.id_dudi = pengguna.id', 'left');
+        $this->db->join('jurusan', 'jurusan.id_jurusan = data_siswa.id_jurusan');
+        $this->db->order_by('nama_jurusan', 'asc');
+        $this->db->order_by('nama_siswa', 'asc');
+        $query = $this->db->get($this->_table);
+        return $query->result();
+    }
+    public function getGuru()
+    {
+        // $this->db->join('data_admin', 'data_admin.id_admin = pengguna.id', 'left');
+        $this->db->join('data_guru', 'data_guru.id_guru = pengguna.id', 'left');
+        // $this->db->join('data_siswa', 'data_siswa.id_siswa = pengguna.id', 'left');
+        // $this->db->join('data_dudi', 'data_dudi.id_dudi = pengguna.id', 'left');
+        $this->db->join('jurusan', 'jurusan.id_jurusan = data_guru.id_jurusan');
+        $this->db->order_by('nama_jurusan', 'asc');
         $query = $this->db->get($this->_table);
         return $query->result();
     }
