@@ -49,6 +49,7 @@
                                             <th style="text-align:center">No.</th>
                                             <th style="text-align:center">Nama Siswa</th>
                                             <th style="text-align:center">Kelas</th>
+                                            <th style="text-align:center">Tempat PKL Siswa</th>
                                             <th style="text-align:center">Tgl Pelaksanaan</th>
                                             <th style="text-align:center">kegiatan</th>
                                             <th style="text-align:center">Dokumentasi</th>
@@ -70,6 +71,9 @@
                                                 </td>
                                                 <td style="text-align:center">
                                                     <?php echo $jurnal->kelas ?>
+                                                </td>
+                                                <td style="">
+                                                    <?php echo $jurnal->nama_dudi ?>
                                                 </td>
                                                 <td style="text-align:center">
                                                     <?php echo date("d-m-Y", strtotime($jurnal->tanggal)) ?>

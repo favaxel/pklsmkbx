@@ -298,9 +298,9 @@
 </div>
 
 <li class="nav-item <?php echo $this->uri->segment(2) == 'ValidasiJurnalPKL' ? 'active' : '' ?>">
-    <a class="nav-link" href="<?= base_url('guru/ValidasiJurnalPKL'); ?>">
+    <a class="nav-link" href="<?= base_url('guru/MonitoringPKL'); ?>">
         <i class="fas fa-fw fa-tasks"></i>
-        <span>Validasi Jurnal PKL</span></a>
+        <span>Monitoring Kegiatan Siswa </span></a>
 </li>
 
 <!-- Divider -->

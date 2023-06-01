@@ -73,7 +73,7 @@
                                             <th style="text-align:center">Tanggal Keluar</th>
                                             <th style="text-align:center">Nama Guru</th>
                                             <th style="text-align:center">Status Validasi</th>
-                                            <th style="text-align:center">Opsi</th>
+                                            <!-- <th style="text-align:center">Opsi</th> -->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -142,9 +142,9 @@
                                                         <span class="badge badge-dark"><?php echo $pelaksanaan->status_validasi; ?></span>
                                                     <?php } ?>
                                                 </td>
-                                                <td style="text-align:center">
+                                                <!-- <td style="text-align:center">
                                                     <a href="<?= base_url('admin/HistoryPelaksanaanPKL/editpengajuanpkl/' . $pelaksanaan->id_pengajuanpkl) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Ubah</a>
-                                                </td>
+                                                </td> -->
                                                 <?php $i++ ?>
                                             </tr>
                                         <?php endforeach; ?>

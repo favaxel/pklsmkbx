@@ -35,7 +35,7 @@ class DataSiswa extends CI_Controller
             redirect('admin/DataSiswa');
         }
         $data['jurusan'] = $this->datasiswa_model->get_data_jurusan();
-        $data['title'] = 'Tambah Akun Pengguna';
+        $data['title'] = 'Tambah Data Siswa';
         $this->load->view("admin/datasiswa/daftarsiswa", $data);
     }
     public function editdatasiswa($id = null)

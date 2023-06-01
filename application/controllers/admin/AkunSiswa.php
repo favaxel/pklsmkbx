@@ -17,7 +17,7 @@ class AkunSiswa extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Akun Pengguna';
+        $data['title'] = 'Akun Siswa';
         $data['pengguna'] = $this->akun_model->getSiswa();
         $data['data_dudi'] = $this->akun_model->getAkun();
         $this->load->view("admin/akunsiswa/listakun", $data);
@@ -34,7 +34,7 @@ class AkunSiswa extends CI_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
             redirect('admin/AkunSiswa');
         }
-        $data['title'] = 'Tambah Akun Pengguna';
+        $data['title'] = 'Tambah Akun Siswa';
         $this->load->view("admin/akunsiswa/daftarakun", $data);
     }
     public function editdataakun($id = null)

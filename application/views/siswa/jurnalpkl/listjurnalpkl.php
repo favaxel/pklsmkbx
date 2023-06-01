@@ -88,7 +88,7 @@
                                             <thead>
                                                 <tr>
                                                     <th width="15" style="text-align:center">No.</th>
-                                                    <th style="text-align:center">Tgl Pelaksanaan</th>
+                                                    <th style="text-align:center">Tanggal Pelaksanaan</th>
                                                     <th style="text-align:center">kegiatan</th>
                                                     <th style="text-align:center">Dokumentasi</th>
                                                     <th style="text-align:center">Opsi</th>

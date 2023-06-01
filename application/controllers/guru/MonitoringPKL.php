@@ -2,13 +2,13 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ValidasiJurnalPKL extends CI_Controller
+class MonitoringPKL extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->model("admin");
-        $this->load->model("validasijurnalpkl_model");
+        $this->load->model("monitoring_model");
         if ($this->admin->is_role() != "guru") {
             redirect("login/");
         }
@@ -16,8 +16,8 @@ class ValidasiJurnalPKL extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Validasi Jurnal PKL';
-        $data["jurnal_pkl"] = $this->validasijurnalpkl_model->getAll();
-        $this->load->view("guru/validasijurnalpkl", $data);
+        $data['title'] = 'Monitoring Kegiatan Siswa ';
+        $data["jurnal_pkl"] = $this->monitoring_model->getAll();
+        $this->load->view("guru/monitoring_v", $data);
     }
 }

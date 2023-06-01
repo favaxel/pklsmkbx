@@ -43,7 +43,7 @@
 
                     <div class="card mb-3">
                         <div class="card-header">
-                            <a class="btn btn-primary" href="<?= base_url("admin/DataAdmin/tambahadmin") ?>"><i class="fas fa-plus"></i> Tambah Data admin</a>
+                            <a class="btn btn-primary" href="<?= base_url("admin/DataAdmin/tambahadmin") ?>"><i class="fas fa-plus"></i> Tambah Data Ketua Jurusan</a>
                         </div>
                     <div class="card mb-3">
                         <div class="card-body">
@@ -53,7 +53,7 @@
                                         <tr>
                                             <th style="text-align:center">No.</th>
                                             <th style="text-align:center">NIP</th>
-                                            <th style="text-align:center">Nama admin</th>
+                                            <th style="text-align:center">Nama Ketua Jurusan</th>
                                             <th style="text-align:center">Jenis Kelamin</th>
                                             <th style="text-align:center">Jurusan</th>
                                             <th style="text-align:center">Opsi</th>

@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') or exit('No direct Scrip access allowed');
 
-class validasijurnalpkl_model extends CI_Model
+class monitoring_model extends CI_Model
 {
 
     private $_table = "jurnal_pkl";
@@ -26,6 +26,7 @@ class validasijurnalpkl_model extends CI_Model
         $this->db->from('jurnal_pkl');
         $this->db->join('pengajuanpkl', 'pengajuanpkl.id_siswa = jurnal_pkl.id_siswa');
         $this->db->join('data_siswa', 'data_siswa.id_siswa = pengajuanpkl.id_siswa');
+        $this->db->join('data_dudi', 'data_dudi.id_dudi = pengajuanpkl.id_dudi');
         $this->db->where('pengajuanpkl.id_guru', $this->session->userdata('id'));
         // $this->db->where('pengajuanpkl.id_dudi', $this->session->userdata('id'));
         $query = $this->db->get();

@@ -55,11 +55,11 @@
 
                         <?php if (empty($permohonanpkl->status_validasi)) { ?>
                             <div class="card-header d-flex justify-content-between mb-2">
-                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#tambahpermohonanpkl"><i class="fas fa-plus"></i> Tambah Permohonan PKL</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahpermohonanpkl"><i class="fas fa-plus"></i> Tambah Permohonan PKL</button>
                             </div>
                         <?php } elseif ($permohonanpkl->status_validasi == 'Ditolak') { ?>
                             <div class="card-header d-flex justify-content-between mb-2">
-                                <button type="button" class="btn btn-light" data-toggle="modal" data-target="#tambahpermohonanpkl"><i class="fas fa-plus"></i> Tambah Permohonan PKL</button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahpermohonanpkl"><i class="fas fa-plus"></i> Tambah Permohonan PKL</button>
                             </div>
                         <?php } ?>
                         <div class="card-body">
@@ -80,7 +80,7 @@
                                     <p>Selamat, permohonan PKL Anda telah diterima oleh pihak perusahaan <strong><?php echo $permohonanpkl->nama_dudi ?></strong>, berikut adalah keterangan terkait pelaksanaan PKL : </p>
                                     <p><strong>Tanggal Masuk Pelaksanaan PKL : <?php echo date("d-m-Y", strtotime($permohonanpkl->tanggal_masuk)) ?></strong></p>
                                     <p><strong>Tanggal Usai Pelaksanaan PKL : <?php echo date("d-m-Y", strtotime($permohonanpkl->tanggal_keluar)) ?></strong></p>
-                                    <p><strong>Status Keanggotan Kelompok PKL : <?php echo $permohonanpkl->status_keanggotaan ?></strong></p>
+
                                     <?php if ($permohonanpkl->id_guru == 0) { ?>
                                         <p><strong>Nama Guru Pembimbing : Belum Ditentukan</strong></p>
                                         <hr>
@@ -128,84 +128,7 @@
                                 </div>
 
                             <?php } ?>
-                            
-
-                            <div class="d-sm-flex align-items-center justify-content-between mb-2">
-                                <h4 class="h4 mr-4 mt-4 mb-1 text-gray-800"> Daftar Permohonan PKL Sebelumnya</h4>
-                            </div>
-                            <div class="table-responsive">
-                                <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                                    <thead>
-                                        <tr>
-                                            <th width="15" style="text-align:center">No.</th>
-                                            <th style="text-align:center">Nama DUDI</th>
-                                            <th style="text-align:center">Waktu Pengajuan</th>
-                                            <th style="text-align:center">Tanggal Masuk</th>
-                                            <th style="text-align:center">Tanggal Keluar</th>
-                                            <th style="text-align:center">Nama Guru</th>
-                                            <th style="text-align:center">Status Validasi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $i = 1;
-                                        foreach ($pengajuanpkl as $pengajuan) : ?>
-                                            <tr>
-                                                <td width="15" style="text-align:center">
-                                                    <?php echo $i ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $pengajuan->nama_dudi; ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <?php echo date("d-m-Y", strtotime($pengajuan->tanggal_pengajuan)) ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <?php if ($pengajuan->tanggal_masuk == "2020-01-01") {
-                                                        echo "Belum ditentukan";
-                                                    } else {
-                                                        echo date("d-m-Y", strtotime($pengajuan->tanggal_masuk));
-                                                    } ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <?php if ($pengajuan->tanggal_keluar == "2020-01-01") {
-                                                        echo "Belum ditentukan";
-                                                    } else {
-                                                        echo date("d-m-Y", strtotime($pengajuan->tanggal_keluar));
-                                                    } ?>
-                                                </td>
-                                                <td>
-                                                    <?php
-                                                    if ($pengajuan->id_guru == 0) { ?>
-                                                        Belum ditunjuk
-                                                    <?php } else { ?>
-                                                        <?php echo $pengajuan->nama_guru; ?>
-                                                    <?php } ?>
-                                                </td>
-                                                <td style="text-align:center">
-                                                    <?php
-                                                    if ($pengajuan->status_validasi == 'Diterima') { ?>
-                                                        <span class="badge badge-success"><?php echo $pengajuan->status_validasi; ?></span>
-                                                    <?php } ?>
-                                                    <?php
-                                                    if ($pengajuan->status_validasi == 'Ditolak') { ?>
-                                                        <span class=" badge badge-danger"><?php echo $pengajuan->status_validasi; ?></span>
-                                                    <?php } ?>
-                                                    <?php
-                                                    if ($pengajuan->status_validasi == 'Proses Pengajuan') { ?>
-                                                        <span class=" badge badge-info"><?php echo $pengajuan->status_validasi; ?></span>
-                                                    <?php } ?>
-                                                    <?php
-                                                    if ($pengajuan->status_validasi == 'Belum Tervalidasi') { ?>
-                                                        <span class="badge badge-warning"><?php echo $pengajuan->status_validasi; ?></span>
-                                                    <?php } ?>
-                                                </td>
-                                                <?php $i++ ?>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                          
                         </div>
                     </div>
                 </div>

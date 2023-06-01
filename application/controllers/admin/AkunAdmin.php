@@ -17,7 +17,7 @@ class AkunAdmin extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Akun Pengguna';
+        $data['title'] = 'Akun Ketua Jurusan';
         $data['pengguna'] = $this->akun_model->getAdmin();
         $data['data_dudi'] = $this->akun_model->getAkun();
         $this->load->view("admin/akunadmin/listakun", $data);

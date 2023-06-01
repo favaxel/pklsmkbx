@@ -33,7 +33,7 @@ class DataGuru extends CI_Controller
             redirect('admin/Dataguru');
         }
         $data['jurusan'] = $this->dataguru_model->get_data_jurusan();
-        $data['title'] = 'Tambah Akun Pengguna';
+        $data['title'] = 'Tambah Data Guru';
         $this->load->view("admin/dataguru/daftarguru", $data);
     }
     public function editdataguru($id = null)

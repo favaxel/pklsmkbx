@@ -17,7 +17,7 @@ class AkunGuru extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Akun Pengguna';
+        $data['title'] = 'Akun Guru';
         $data['pengguna'] = $this->akun_model->getGuru();
         $data['data_dudi'] = $this->akun_model->getAkun();
         $this->load->view("admin/akunguru/listakun", $data);
